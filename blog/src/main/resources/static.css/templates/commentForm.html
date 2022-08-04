@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head th:replace="/fragments/head :: head"></head>
+<body>
+
+     <div class="container">
+
+     <h2>Write new comment</h2> <!--заголовок-->
+         <form action="#"
+               th:action="@{'/comment'}" <!--посилання на метод-->
+               th:object="${comment}"
+               method="post">
+             <label> <!--вибиває помилку -->
+                 <div class="alert-red" th:if="${#fields.hasErrors('body')}" th:errors="*{body}">Body Error</div>
+                 <textarea th:field="*{body}" placeholder="Write something valuable"></textarea>
+             </label>
+             <div>
+                 <button class="green-btn" type="submit">Send</button>
+             </div>
+         </form>
+     </div>
+
+     <footer th:replace="/fragments/footer :: footer"></footer>
+</body>
+
+</html>
